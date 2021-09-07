@@ -1,9 +1,14 @@
-const Messenger = () => {
-    return (
-        <div>
-            This is Messenger
-        </div>
-    )
-}
+import ConversationContainer from "./ConversationContainer";
+import ConversationListContainer from "./ConversationListContainer";
+import "./messenger.css";
 
-export default Messenger
+const Messenger = () => {
+  return (
+    <div className="messengerWrapper">
+      <ConversationListContainer />
+      <ConversationContainer />
+    </div>
+  );
+};
+
+export default Messenger;

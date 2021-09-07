@@ -1,22 +1,28 @@
 import { useRef } from "react";
-import { loginCall } from "../../api-calls";
 import { useAuthContext } from "../../context/auth-context";
 import "./login.css";
 import Loader from "react-loader-spinner";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const email = useRef();
   const password = useRef();
 
-  const { user, isFetching, dispatch } = useAuthContext();
+  const { state } = useLocation();
+  const navigate = useNavigate();
 
-  const handleClick = (e) => {
+  const { isFetching, loginUser, dispatch } = useAuthContext();
+
+  const loginHandler = async (e) => {
     e.preventDefault();
-    loginCall(
-      { email: email.current.value, password: password.current.value },
-      dispatch
-    );
-    console.log(user);
+    dispatch({ type: "LOGIN_START" });
+    try {
+      const res = await loginUser(email.current.value, password.current.value);
+      dispatch({ type: "LOGIN_SUCCESS", payload: res });
+      navigate(state?.from ? state.from : "/messenger");
+    } catch (error) {
+      dispatch({ type: "LOGIN_FAILURE", payload: error });
+    }
   };
 
   return (
@@ -27,7 +33,7 @@ const Login = () => {
           <span className="loginDesc">Connect with your friends</span>
         </div>
         <div className="loginRight">
-          <form className="loginBox" onSubmit={handleClick}>
+          <form className="loginBox" onSubmit={loginHandler}>
             <input
               placeholder="Email"
               type="email"

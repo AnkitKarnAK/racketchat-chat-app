@@ -1,8 +1,8 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useAuthContext } from "../../context/auth-context";
 import "./login.css";
 import Loader from "react-loader-spinner";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 
 const Login = () => {
   const email = useRef();
@@ -13,15 +13,36 @@ const Login = () => {
 
   const { isFetching, loginUser, dispatch } = useAuthContext();
 
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+
   const loginHandler = async (e) => {
     e.preventDefault();
-    dispatch({ type: "LOGIN_START" });
+    dispatch({ type: "FETCH_START" });
     try {
       const res = await loginUser(email.current.value, password.current.value);
-      dispatch({ type: "LOGIN_SUCCESS", payload: res });
+      dispatch({ type: "FETCH_SUCCESS", payload: res });
       navigate(state?.from ? state.from : "/messenger");
     } catch (error) {
-      dispatch({ type: "LOGIN_FAILURE", payload: error });
+      dispatch({ type: "FETCH_FAILURE", payload: error });
+    }
+  };
+
+  const emailValidator = () => {
+    if (/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {
+      setEmailError("");
+    } else {
+      setEmailError("• Not a valid email");
+    }
+  };
+
+  const passwordValidator = () => {
+    if (/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,}/.test(password)) {
+      setPasswordError("");
+    } else {
+      setPasswordError(
+        "• Your password must be have at least\n8 characters long\n 1 uppercase & 1 lowercase character\n 1 number"
+      );
     }
   };
 
@@ -42,7 +63,9 @@ const Login = () => {
               required
               className="loginInput"
               ref={email}
+              onBlur={emailValidator}
             ></input>
+            <div className="loginInputError">{emailError}</div>
             <input
               placeholder="Password"
               type="password"
@@ -51,7 +74,9 @@ const Login = () => {
               required
               className="loginInput"
               ref={password}
+              onBlur={passwordValidator}
             ></input>
+            <div className="loginInputError">{passwordError}</div>
             <button className="loginButton" type="submit" disabled={isFetching}>
               {isFetching ? (
                 <Loader type="ThreeDots" color="#fff" height={40} width={50} />
@@ -60,7 +85,9 @@ const Login = () => {
               )}
             </button>
             <span className="loginForgot">Forget Password?</span>
-            <button className="loginSignupButton">Create New Account</button>
+            <button className="loginSignupButton">
+              <Link to="/signup">Create your account</Link>
+            </button>
           </form>
         </div>
       </div>

@@ -124,6 +124,7 @@
 
 .chatOnline {
   flex: 2;
+  background-color: var(--primary-color);
 }
 
 .chatBoxWrapper,

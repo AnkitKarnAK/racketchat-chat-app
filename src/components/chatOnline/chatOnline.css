@@ -16,7 +16,6 @@
   height: 40px;
   border-radius: 50%;
   object-fit: cover;
-  border: 1px solid white;
 }
 
 .chatOnlineBadge {
@@ -24,10 +23,14 @@
   height: 12px;
   border: 2px solid white;
   border-radius: 50%;
-  background-color: limegreen;
+  background-color: #10b981;
   position: absolute;
   bottom: 3px;
   right: 2px;
+}
+
+.chatOnlineName {
+  color: white;
 }
 
 @media screen and (max-width: 768px) {

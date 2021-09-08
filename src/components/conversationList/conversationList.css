@@ -1,48 +1,3 @@
-.conversationPreview_wrapper {
-  height: 37px;
-  display: flex;
-  align-items: center;
-}
-
-.conversationPreview_wrapper_selected {
-  height: auto;
-  display: flex;
-  align-items: center;
-  background: rgba(0, 0, 0, 0.2);
-  border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px;
-  font-weight: bold;
-  margin-right: 16px;
-  cursor: pointer;
-  z-index: 2;
-}
-
-.conversationPreview_wrapper:hover {
-  background: rgba(0, 0, 0, 0.2);
-  border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px;
-  font-weight: bold;
-  margin-right: 16px;
-  cursor: pointer;
-}
-
-.conversationPreview_item {
-  display: flex;
-  align-items: center;
-  font-family: Helvetica Neue, sans-serif;
-  font-size: 14px;
-  color: #ffffff;
-  padding: 0px 20px;
-  height: 100%;
-  width: 100%;
-  text-overflow: ellipsis;
-  word-break: break-all;
-}
-
-.conversationPreview_item.single {
-  margin-right: 12px;
-}
-
 .conversationList {
   width: 100%;
   display: flex;
@@ -56,9 +11,62 @@
 }
 .conversationList_header_title {
   font-family: Helvetica Neue, sans-serif;
-  font-size: 13px;
+  font-size: 16px;
   line-height: 16px;
   height: 16px;
   color: rgba(255, 255, 255, 0.66);
   margin-bottom: 10px;
+}
+
+.conversation_wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.conversationImg {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.conversationName {
+  font-weight: 500;
+}
+
+/* .conversation_selected {
+  height: auto;
+  display: flex;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.2);
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  font-weight: bold;
+  margin-right: 16px;
+  cursor: pointer;
+  z-index: 2;
+} */
+
+.conversation:hover {
+  background: rgba(0, 0, 0, 0.2);
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  font-weight: bold;
+  margin-right: 16px;
+  cursor: pointer;
+}
+
+.conversation {
+  display: flex;
+  align-items: center;
+  font-family: Helvetica Neue, sans-serif;
+  margin-top: 10px;
+  font-size: 14px;
+  color: #ffffff;
+  padding: 5px 10px;
+  height: 100%;
+  width: 100%;
+  text-overflow: ellipsis;
+  word-break: break-all;
 }

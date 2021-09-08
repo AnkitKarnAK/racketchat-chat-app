@@ -1,18 +1,15 @@
 import "./conversationList.css";
 
-const ConversationPreview = () => {
+const Conversation = () => {
   return (
     <>
-      <div
-        className={
-          false
-            ? "conversationPreview_wrapper_selected"
-            : "conversationPreview_wrapper"
-        }
-      >
-        <div className="conversationPreview_item single">
-          <p>user a</p>
-        </div>
+      <div className="conversation">
+        <img
+          className="conversationImg"
+          src="https://images.pexels.com/photos/3686769/pexels-photo-3686769.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+          alt="conversation"
+        />
+        <span className="conversationName">User account 2</span>
       </div>
     </>
   );
@@ -23,9 +20,13 @@ const ConversationList = () => {
     <>
       <div className="conversationList">
         <div className="conversationList_header">
-          <p className="conversationList_header_title">Direct Messages</p>
+          <p className="conversationList_header_title">Conversations</p>
         </div>
-        <ConversationPreview />
+        <div className="conversation_wrapper">
+          <Conversation />
+          <Conversation />
+          <Conversation />
+        </div>
       </div>
     </>
   );

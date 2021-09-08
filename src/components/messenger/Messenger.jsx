@@ -1,5 +1,5 @@
 import ChatContainer from "./ChatContainer";
-import ChatOnline from "./ChatOnline";
+import ChatOnline from "../chatOnline/ChatOnline";
 import ConversationListContainer from "./ConversationListContainer";
 import "./messenger.css";
 
@@ -8,7 +8,11 @@ const Messenger = () => {
     <div className="messengerWrapper">
       <ConversationListContainer />
       <ChatContainer />
-      <ChatOnline />
+      <div className="chatOnline">
+        <div className="chatOnlineWrapper">
+          <ChatOnline />
+        </div>
+      </div>
     </div>
   );
 };

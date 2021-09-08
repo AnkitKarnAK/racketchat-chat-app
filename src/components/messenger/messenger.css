@@ -77,15 +77,13 @@
 }
 
 .chatBox {
-  flex: 5.5;
+  flex: 8;
 }
 .chatBoxWrapper {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   position: relative;
-  height: 100vh;
-  padding: 1rem;
 }
 
 .chatBoxTop {
@@ -128,6 +126,20 @@
   flex: 2;
 }
 
+.chatBoxWrapper,
+.chatOnlineWrapper {
+  padding: 10px;
+  height: 100%;
+}
+
+.noConversationText {
+  position: absolute;
+  top: 10%;
+  font-size: 50px;
+  color: rgb(224, 220, 220);
+  cursor: default;
+}
+
 @media screen and (max-width: 560px) {
   .conversationList_container {
     display: none;
@@ -149,13 +161,14 @@
     margin: 10px;
   }
   .chatBox {
-    flex: 8;
+    flex: 10;
   }
   .chatBoxWrapper {
-    padding: 1rem 0.5rem;
+    padding: 5px;
   }
+
   .chatOnline {
-    flex: 1;
-    border: 1px solid #000;
+    border-left: 1px solid #a2a2a2;
+    width: 40px;
   }
 }

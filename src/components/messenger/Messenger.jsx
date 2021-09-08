@@ -1,4 +1,5 @@
-import ConversationContainer from "./ConversationContainer";
+import ChatContainer from "./ChatContainer";
+import ChatOnline from "./ChatOnline";
 import ConversationListContainer from "./ConversationListContainer";
 import "./messenger.css";
 
@@ -6,7 +7,8 @@ const Messenger = () => {
   return (
     <div className="messengerWrapper">
       <ConversationListContainer />
-      <ConversationContainer />
+      <ChatContainer />
+      <ChatOnline />
     </div>
   );
 };

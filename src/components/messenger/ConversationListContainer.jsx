@@ -39,26 +39,26 @@ const CompanyHeader = () => (
   </div>
 );
 
-const ConversationListContent = () => {
+const ConversationListContent = ({ conversations }) => {
   return (
     <>
       <div className="conversationList_list_wrapper">
         <CompanyHeader />
         <ConversationSearch />
-        <ConversationList />
+        <ConversationList conversations={conversations} />
       </div>
     </>
   );
 };
 
-const ConversationListContainer = () => {
+const ConversationListContainer = ({ conversations }) => {
   const [toggleContainer, setToggleContainer] = useState(false);
 
   return (
     <>
       <Sidebar setToggleContainer={setToggleContainer} />
       <div className="conversationList_container">
-        <ConversationListContent />
+        <ConversationListContent conversations={conversations} />
       </div>
       <div
         className="conversationList_container-responsive"
@@ -67,7 +67,7 @@ const ConversationListContainer = () => {
           backgroundColor: "#005fff",
         }}
       >
-        <ConversationListContent />
+        <ConversationListContent conversations={conversations} />
       </div>
     </>
   );

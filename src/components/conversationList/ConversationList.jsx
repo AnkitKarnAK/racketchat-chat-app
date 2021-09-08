@@ -6,11 +6,11 @@ const ConversationPreview = () => {
       <div
         className={
           false
-            ? "channel-preview__wrapper__selected"
-            : "channel-preview__wrapper"
+            ? "conversationPreview_wrapper_selected"
+            : "conversationPreview_wrapper"
         }
       >
-        <div className="channel-preview__item single">
+        <div className="conversationPreview_item single">
           <p>user a</p>
         </div>
       </div>
@@ -21,9 +21,9 @@ const ConversationPreview = () => {
 const ConversationList = () => {
   return (
     <>
-      <div className="team-channel-list">
-        <div className="team-channel-list__header">
-          <p className="team-channel-list__header__title">Direct Messages</p>
+      <div className="conversationList">
+        <div className="conversationList_header">
+          <p className="conversationList_header_title">Direct Messages</p>
         </div>
         <ConversationPreview />
       </div>

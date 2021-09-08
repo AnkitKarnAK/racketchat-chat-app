@@ -57,13 +57,13 @@ const ConversationListContainer = () => {
   return (
     <>
       <Sidebar setToggleContainer={setToggleContainer} />
-      <div className="channel-list__container">
+      <div className="conversationList_container">
         <ConversationListContent />
       </div>
       <div
-        className="channel-list__container-responsive"
+        className="conversationList_container-responsive"
         style={{
-          left: toggleContainer ? "50px" : "-89%",
+          left: toggleContainer ? "60px" : "-89%",
           backgroundColor: "#005fff",
         }}
       >

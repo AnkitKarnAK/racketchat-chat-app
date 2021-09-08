@@ -1,10 +1,10 @@
-.channel-preview__wrapper {
+.conversationPreview_wrapper {
   height: 37px;
   display: flex;
   align-items: center;
 }
 
-.channel-preview__wrapper__selected {
+.conversationPreview_wrapper_selected {
   height: auto;
   display: flex;
   align-items: center;
@@ -17,7 +17,7 @@
   z-index: 2;
 }
 
-.channel-preview__wrapper:hover {
+.conversationPreview_wrapper:hover {
   background: rgba(0, 0, 0, 0.2);
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
@@ -26,7 +26,7 @@
   cursor: pointer;
 }
 
-.channel-preview__item {
+.conversationPreview_item {
   display: flex;
   align-items: center;
   font-family: Helvetica Neue, sans-serif;
@@ -39,22 +39,22 @@
   word-break: break-all;
 }
 
-.channel-preview__item.single {
+.conversationPreview_item.single {
   margin-right: 12px;
 }
 
-.team-channel-list {
+.conversationList {
   width: 100%;
   display: flex;
   flex-direction: column;
 }
-.team-channel-list__header {
+.conversationList_header {
   padding: 0 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.team-channel-list__header__title {
+.conversationList_header_title {
   font-family: Helvetica Neue, sans-serif;
   font-size: 13px;
   line-height: 16px;

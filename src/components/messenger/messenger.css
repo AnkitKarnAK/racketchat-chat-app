@@ -5,14 +5,14 @@
   box-shadow: rgba(0, 0, 0, 0.33) 0px 1px 4px 0px;
 }
 
-.channel-list__container {
+.conversationList_container {
   display: flex;
   /* height: 800px; */
   height: 100%;
   box-shadow: inset 1px 0px 0px rgba(0, 0, 0, 0.1);
 }
 
-.channel-list__container-responsive {
+.conversationList_container-responsive {
   display: none;
   height: 100%;
   box-shadow: inset 1px 0px 0px rgba(0, 0, 0, 0.1);
@@ -78,11 +78,11 @@
 }
 
 @media screen and (max-width: 560px) {
-  .channel-list__container {
+  .conversationList_container {
     display: none;
   }
 
-  .channel-list__container-responsive {
+  .conversationList_container-responsive {
     display: flex;
   }
 
@@ -90,11 +90,11 @@
     width: 100%;
   }
   .conversationList_sidebar {
-    width: 50px;
+    width: 60px;
   }
   .conversationList_sidebar_icon {
     width: 40px;
     height: 40px;
-    margin: 5px;
+    margin: 10px;
   }
 }

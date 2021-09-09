@@ -1,5 +1,6 @@
 import "./chatOnline.css";
 import { useState, useEffect } from "react";
+import axios from "axios";
 
 const ChatOnline = ({ allUsers, currentId, socketUsers, setCurrentChat }) => {
   const [onlineUsers, setOnlineUsers] = useState([]);
@@ -12,10 +13,23 @@ const ChatOnline = ({ allUsers, currentId, socketUsers, setCurrentChat }) => {
     );
   }, [allUsers, currentId, socketUsers]);
 
+  const conversationHandler = async (user) => {
+    try {
+      const res = await axios.get(
+        `https://racketapi.ankitkarn.repl.co/conversations/find/${currentId}/${user._id}`
+      );
+      setCurrentChat(res.data);
+    } catch (err) {}
+  };
+
   return (
     <div className="chatOnlineContainer">
       {onlineUsers?.map((onlineUser) => (
-        <div className="chatOnlineFriend" key={onlineUser._id}>
+        <div
+          className="chatOnlineFriend"
+          key={onlineUser._id}
+          onClick={() => conversationHandler(onlineUser)}
+        >
           <div className="chatOnlineImgContainer">
             <img
               className="chatOnlineImg"

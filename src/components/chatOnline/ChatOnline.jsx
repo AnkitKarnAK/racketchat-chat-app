@@ -1,16 +1,16 @@
 import "./chatOnline.css";
 import { useState, useEffect } from "react";
 
-const ChatOnline = ({ allUsers, socketUsers, setCurrentChat }) => {
+const ChatOnline = ({ allUsers, currentId, socketUsers, setCurrentChat }) => {
   const [onlineUsers, setOnlineUsers] = useState([]);
 
   useEffect(() => {
     setOnlineUsers(
-      allUsers.filter((allUser) =>
-        socketUsers.some((u) => u._id === allUser._id)
-      )
+      allUsers
+        .filter((allUser) => socketUsers.some((u) => u._id === allUser._id))
+        .filter((u) => u._id !== currentId)
     );
-  }, [allUsers, socketUsers]);
+  }, [allUsers, currentId, socketUsers]);
 
   return (
     <div className="chatOnlineContainer">

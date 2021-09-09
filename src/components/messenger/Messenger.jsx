@@ -105,6 +105,7 @@ const Messenger = () => {
           <ChatOnline
             allUsers={allUsers}
             socketUsers={socketUsers}
+            currentId={user._id}
             setCurrentChat={setCurrentChat}
           />
         </div>

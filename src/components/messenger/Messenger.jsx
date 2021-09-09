@@ -12,6 +12,8 @@ const Messenger = () => {
   const [currentChat, setCurrentChat] = useState(null);
   const [messages, setMessages] = useState([]);
   const [arrivalMessage, setArrivalMessage] = useState([]);
+  const [allUsers, setAllUsers] = useState([]);
+  const [socketUsers, setSocketUsers] = useState([]);
   const socket = useRef();
   const { user } = useAuthContext();
 
@@ -35,8 +37,26 @@ const Messenger = () => {
   useEffect(() => {
     socket.current.emit("addUser", user._id);
     socket.current.on("getUsers", (users) => {
-      console.log(users);
+      setSocketUsers(
+        allUsers.filter((allUser) =>
+          users.some((u) => u.userId === allUser._id)
+        )
+      );
     });
+  }, [user._id, allUsers]);
+
+  useEffect(() => {
+    const getAllUsers = async () => {
+      try {
+        const res = await axios.get(
+          "https://racketapi.ankitkarn.repl.co/users/all"
+        );
+        setAllUsers(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getAllUsers();
   }, [user._id]);
 
   useEffect(() => {
@@ -82,7 +102,11 @@ const Messenger = () => {
       />
       <div className="chatOnline">
         <div className="chatOnlineWrapper">
-          <ChatOnline />
+          <ChatOnline
+            allUsers={allUsers}
+            socketUsers={socketUsers}
+            setCurrentChat={setCurrentChat}
+          />
         </div>
       </div>
     </div>

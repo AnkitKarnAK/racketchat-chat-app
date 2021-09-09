@@ -1,19 +1,32 @@
 import "./chatOnline.css";
+import { useState, useEffect } from "react";
 
-const ChatOnline = () => {
+const ChatOnline = ({ allUsers, socketUsers, setCurrentChat }) => {
+  const [onlineUsers, setOnlineUsers] = useState([]);
+
+  useEffect(() => {
+    setOnlineUsers(
+      allUsers.filter((allUser) =>
+        socketUsers.some((u) => u._id === allUser._id)
+      )
+    );
+  }, [allUsers, socketUsers]);
+
   return (
     <div className="chatOnlineContainer">
-      <div className="chatOnlineFriend">
-        <div className="chatOnlineImgContainer">
-          <img
-            className="chatOnlineImg"
-            src="https://images.pexels.com/photos/3686769/pexels-photo-3686769.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-            alt="friend"
-          />
-          <div className="chatOnlineBadge"></div>
+      {onlineUsers?.map((onlineUser) => (
+        <div className="chatOnlineFriend" key={onlineUser._id}>
+          <div className="chatOnlineImgContainer">
+            <img
+              className="chatOnlineImg"
+              src="https://images.pexels.com/photos/3686769/pexels-photo-3686769.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+              alt="friend"
+            />
+            <div className="chatOnlineBadge"></div>
+          </div>
+          <span className="chatOnlineName">{onlineUser.username}</span>
         </div>
-        <span className="chatOnlineName">Admin AK</span>
-      </div>
+      ))}
     </div>
   );
 };

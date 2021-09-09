@@ -2,14 +2,17 @@ import axios from "axios";
 import { useAuthContext } from "../../context/auth-context";
 import Message from "../message/Message";
 import "./messenger.css";
-import { useState } from "react";
+import { useRef, useState, useEffect } from "react";
 
 const ChatContainer = ({ currentChat, messages, setMessages }) => {
   const { user } = useAuthContext();
   const [newMessage, setNewMessage] = useState("");
 
+  const scrollRef = useRef();
+
   const messageSendHandler = async (e) => {
     e.preventDefault();
+    if (newMessage.trim() === "") return;
     const message = {
       sender: user._id,
       text: newMessage,
@@ -28,6 +31,10 @@ const ChatContainer = ({ currentChat, messages, setMessages }) => {
     }
   };
 
+  useEffect(() => {
+    scrollRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
   return (
     <div className="chatBox">
       <div className="chatBoxWrapper">
@@ -35,23 +42,26 @@ const ChatContainer = ({ currentChat, messages, setMessages }) => {
           <>
             <div className="chatBoxTop">
               {messages.map((message) => (
-                <Message
-                  message={message}
-                  own={message.sender === user._id}
-                  key={message._id}
-                />
+                <div ref={scrollRef} key={message._id}>
+                  <Message
+                    message={message}
+                    own={message.sender === user._id}
+                  />
+                </div>
               ))}
             </div>
             <div className="chatBoxBottom">
-              <textarea
-                className="chatMessageInput"
-                placeholder="write something..."
-                onChange={(e) => setNewMessage(e.target.value)}
-                value={newMessage}
-              ></textarea>
-              <button className="chatSubmitButton" onClick={messageSendHandler}>
-                Send
-              </button>
+              <form onSubmit={messageSendHandler}>
+                <input
+                  className="chatMessageInput"
+                  placeholder="write something..."
+                  onChange={(e) => setNewMessage(e.target.value)}
+                  value={newMessage}
+                ></input>
+                <button className="chatSubmitButton" type="submit">
+                  Send
+                </button>
+              </form>
             </div>
           </>
         ) : (

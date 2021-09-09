@@ -4,10 +4,9 @@ import "./messenger.css";
 import ConversationSearch from "../conversationSearch/ConversationSearch";
 import { useAuthContext } from "../../context/auth-context";
 import ConversationList from "../conversationList/ConversationList";
-import React, { useState } from "react";
 
-const Sidebar = ({ setToggleContainer }) => {
-  const { logoutUser } = useAuthContext();
+const Sidebar = () => {
+  const { logoutUser, setToggleContainer } = useAuthContext();
 
   return (
     <div className="conversationList_sidebar">
@@ -54,11 +53,11 @@ const ConversationListContent = ({ conversations, setCurrentChat }) => {
 };
 
 const ConversationListContainer = ({ conversations, setCurrentChat }) => {
-  const [toggleContainer, setToggleContainer] = useState(false);
+  const { toggleContainer } = useAuthContext();
 
   return (
     <>
-      <Sidebar setToggleContainer={setToggleContainer} />
+      <Sidebar />
       <div className="conversationList_container">
         <ConversationListContent
           conversations={conversations}

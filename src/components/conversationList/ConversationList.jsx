@@ -40,6 +40,7 @@ const Conversation = ({ conversation }) => {
 };
 
 const ConversationList = ({ conversations, setCurrentChat }) => {
+  const { setToggleContainer } = useAuthContext();
   return (
     <>
       <div className="conversationList">
@@ -52,6 +53,7 @@ const ConversationList = ({ conversations, setCurrentChat }) => {
               key={conversation._id}
               onClick={() => {
                 setCurrentChat(conversation);
+                setToggleContainer((prev) => !prev);
               }}
             >
               <Conversation conversation={conversation} />

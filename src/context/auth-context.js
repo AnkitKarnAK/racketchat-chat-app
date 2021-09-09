@@ -1,4 +1,10 @@
-import { createContext, useContext, useReducer, useEffect } from "react";
+import {
+  createContext,
+  useContext,
+  useReducer,
+  useEffect,
+  useState,
+} from "react";
 import axios from "axios";
 import authReducer from "./auth-reducer";
 import { useNavigate } from "react-router-dom";
@@ -15,6 +21,8 @@ export const useAuthContext = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, INITIAL_STATE);
+
+  const [toggleContainer, setToggleContainer] = useState(false);
 
   const navigate = useNavigate();
 
@@ -87,6 +95,8 @@ export const AuthProvider = ({ children }) => {
         logoutUser,
         signupUser,
         dispatch,
+        toggleContainer,
+        setToggleContainer,
       }}
     >
       {children}

@@ -5,7 +5,7 @@ import "./messenger.css";
 import { useRef, useState, useEffect } from "react";
 
 const ChatContainer = ({ currentChat, messages, setMessages, socket }) => {
-  const { user } = useAuthContext();
+  const { user, setToggleContainer } = useAuthContext();
   const [newMessage, setNewMessage] = useState("");
 
   const scrollRef = useRef();
@@ -46,7 +46,12 @@ const ChatContainer = ({ currentChat, messages, setMessages, socket }) => {
   }, [messages]);
 
   return (
-    <div className="chatBox">
+    <div
+      className="chatBox"
+      onClick={() => {
+        setToggleContainer(false);
+      }}
+    >
       <div className="chatBoxWrapper">
         {currentChat ? (
           <>

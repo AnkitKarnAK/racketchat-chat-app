@@ -15,7 +15,7 @@ const Messenger = () => {
   const [allUsers, setAllUsers] = useState([]);
   const [socketUsers, setSocketUsers] = useState([]);
   const socket = useRef();
-  const { user } = useAuthContext();
+  const { user, setToggleContainer } = useAuthContext();
 
   useEffect(() => {
     socket.current = io("https://racketapi.ankitkarn.repl.co");
@@ -94,14 +94,21 @@ const Messenger = () => {
         conversations={conversations}
         setCurrentChat={setCurrentChat}
       />
+
       <ChatContainer
         currentChat={currentChat}
         messages={messages}
         setMessages={setMessages}
         socket={socket}
       />
+
       <div className="chatOnline">
-        <div className="chatOnlineWrapper">
+        <div
+          className="chatOnlineWrapper"
+          onClick={() => {
+            setToggleContainer(false);
+          }}
+        >
           <ChatOnline
             allUsers={allUsers}
             socketUsers={socketUsers}

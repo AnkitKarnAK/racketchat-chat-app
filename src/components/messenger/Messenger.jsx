@@ -2,15 +2,42 @@ import ChatContainer from "./ChatContainer";
 import ChatOnline from "../chatOnline/ChatOnline";
 import ConversationListContainer from "./ConversationListContainer";
 import "./messenger.css";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useAuthContext } from "../../context/auth-context";
 import axios from "axios";
+import { io } from "socket.io-client";
 
 const Messenger = () => {
   const [conversations, setConversations] = useState([]);
   const [currentChat, setCurrentChat] = useState(null);
   const [messages, setMessages] = useState([]);
+  const [arrivalMessage, setArrivalMessage] = useState([]);
+  const socket = useRef();
   const { user } = useAuthContext();
+
+  useEffect(() => {
+    socket.current = io("https://racketapi.ankitkarn.repl.co");
+    socket.current.on("getMessage", (data) => {
+      setArrivalMessage({
+        sender: data.senderId,
+        text: data.text,
+        createdAt: Date.now(),
+      });
+    });
+  }, []);
+
+  useEffect(() => {
+    arrivalMessage &&
+      currentChat?.members.includes(arrivalMessage.sender) &&
+      setMessages((prev) => [...prev, arrivalMessage]);
+  }, [arrivalMessage, currentChat]);
+
+  useEffect(() => {
+    socket.current.emit("addUser", user._id);
+    socket.current.on("getUsers", (users) => {
+      console.log(users);
+    });
+  }, [user._id]);
 
   useEffect(() => {
     const fetchConversations = async () => {
@@ -51,6 +78,7 @@ const Messenger = () => {
         currentChat={currentChat}
         messages={messages}
         setMessages={setMessages}
+        socket={socket}
       />
       <div className="chatOnline">
         <div className="chatOnlineWrapper">

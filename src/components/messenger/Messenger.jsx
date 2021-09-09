@@ -8,6 +8,8 @@ import axios from "axios";
 
 const Messenger = () => {
   const [conversations, setConversations] = useState([]);
+  const [currentChat, setCurrentChat] = useState(null);
+  const [messages, setMessages] = useState([]);
   const { user } = useAuthContext();
 
   useEffect(() => {
@@ -24,10 +26,32 @@ const Messenger = () => {
     fetchConversations();
   }, [user._id]);
 
+  useEffect(() => {
+    const getMessages = async () => {
+      setMessages([]);
+      try {
+        const res = await axios.get(
+          "https://racketapi.ankitkarn.repl.co/messages/" + currentChat?._id
+        );
+        setMessages(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getMessages();
+  }, [currentChat]);
+
   return (
     <div className="messengerWrapper">
-      <ConversationListContainer conversations={conversations} />
-      <ChatContainer />
+      <ConversationListContainer
+        conversations={conversations}
+        setCurrentChat={setCurrentChat}
+      />
+      <ChatContainer
+        currentChat={currentChat}
+        messages={messages}
+        setMessages={setMessages}
+      />
       <div className="chatOnline">
         <div className="chatOnlineWrapper">
           <ChatOnline />

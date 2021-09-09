@@ -38,26 +38,32 @@ const CompanyHeader = () => (
   </div>
 );
 
-const ConversationListContent = ({ conversations }) => {
+const ConversationListContent = ({ conversations, setCurrentChat }) => {
   return (
     <>
       <div className="conversationList_list_wrapper">
         <CompanyHeader />
         <ConversationSearch />
-        <ConversationList conversations={conversations} />
+        <ConversationList
+          conversations={conversations}
+          setCurrentChat={setCurrentChat}
+        />
       </div>
     </>
   );
 };
 
-const ConversationListContainer = ({ conversations }) => {
+const ConversationListContainer = ({ conversations, setCurrentChat }) => {
   const [toggleContainer, setToggleContainer] = useState(false);
 
   return (
     <>
       <Sidebar setToggleContainer={setToggleContainer} />
       <div className="conversationList_container">
-        <ConversationListContent conversations={conversations} />
+        <ConversationListContent
+          conversations={conversations}
+          setCurrentChat={setCurrentChat}
+        />
       </div>
       <div
         className="conversationList_container-responsive"
@@ -66,7 +72,10 @@ const ConversationListContainer = ({ conversations }) => {
           backgroundColor: "#005fff",
         }}
       >
-        <ConversationListContent conversations={conversations} />
+        <ConversationListContent
+          conversations={conversations}
+          setCurrentChat={setCurrentChat}
+        />
       </div>
     </>
   );

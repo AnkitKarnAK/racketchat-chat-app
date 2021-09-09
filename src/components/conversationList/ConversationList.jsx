@@ -39,7 +39,7 @@ const Conversation = ({ conversation }) => {
   );
 };
 
-const ConversationList = ({ conversations }) => {
+const ConversationList = ({ conversations, setCurrentChat }) => {
   return (
     <>
       <div className="conversationList">
@@ -48,7 +48,14 @@ const ConversationList = ({ conversations }) => {
         </div>
         <div className="conversation_wrapper">
           {conversations?.map((conversation) => (
-            <Conversation conversation={conversation} key={conversation._id} />
+            <div
+              key={conversation._id}
+              onClick={() => {
+                setCurrentChat(conversation);
+              }}
+            >
+              <Conversation conversation={conversation} />
+            </div>
           ))}
         </div>
       </div>

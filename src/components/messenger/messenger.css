@@ -24,7 +24,7 @@
 
 .conversationList_sidebar {
   z-index: 2;
-  width: 72px;
+  width: 4.5rem;
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
     var(--primary-color);
   box-shadow: 1px 0px 0px rgba(0, 0, 0, 0.25);
@@ -33,9 +33,9 @@
 }
 
 .conversationList_sidebar_icon {
-  width: 44px;
-  height: 44px;
-  margin: 14px;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin: 0.875rem;
   background: linear-gradient(
       150.64deg,
       rgba(0, 0, 0, 0.1) 12.73%,
@@ -56,8 +56,8 @@
 }
 
 .conversationList_header {
-  padding-left: 16px;
-  height: 62px;
+  padding-left: 1rem;
+  height: 3.875rem;
 }
 
 .conversationList_header_text {
@@ -73,7 +73,7 @@
   display: flex;
   flex-direction: column;
   background: var(--primary-color);
-  width: 240px;
+  width: 15rem;
 }
 
 .chatBox {
@@ -89,11 +89,11 @@
 .chatBoxTop {
   height: 100%;
   overflow-y: scroll;
-  padding-right: 10px;
+  padding-right: 0.5rem;
 }
 
 .chatBoxBottom {
-  margin: 8px 0;
+  margin: 0.5rem 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -101,11 +101,11 @@
 
 .chatMessageInput {
   width: 90%;
-  height: 90px;
+  height: 5rem;
   border: 1px solid var(--primary-color);
   border-radius: 5px;
   outline: none;
-  font-size: 16px;
+  font-size: 1rem;
   resize: none;
 }
 .chatMessageInput:focus {
@@ -113,8 +113,8 @@
 }
 
 .chatSubmitButton {
-  width: 70px;
-  height: 40px;
+  width: 4.5rem;
+  height: 2.5rem;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -129,14 +129,14 @@
 
 .chatBoxWrapper,
 .chatOnlineWrapper {
-  padding: 10px;
+  padding: 0.5rem;
   height: 100%;
 }
 
 .noConversationText {
   position: absolute;
   top: 10%;
-  font-size: 50px;
+  font-size: 3.5rem;
   color: rgb(224, 220, 220);
   cursor: default;
 }
@@ -154,12 +154,12 @@
     width: 100%;
   }
   .conversationList_sidebar {
-    width: 60px;
+    width: 3.75rem;
   }
   .conversationList_sidebar_icon {
-    width: 40px;
-    height: 40px;
-    margin: 10px;
+    width: 2.5rem;
+    height: 2.5rem;
+    margin: 0.625rem;
   }
   .chatBox {
     flex: 10;
@@ -170,6 +170,9 @@
 
   .chatOnline {
     border-left: 1px solid #a2a2a2;
-    width: 40px;
+    width: 2.5rem;
+  }
+  .noConversationText {
+    font-size: 2.5rem;
   }
 }

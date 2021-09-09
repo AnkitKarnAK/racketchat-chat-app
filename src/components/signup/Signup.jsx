@@ -32,7 +32,7 @@ const Signup = () => {
   };
 
   const usernameValidator = () => {
-    if (/[a-zA-Z0-9]{2,}$/.test(username)) {
+    if (/[a-zA-Z0-9]{2,}$/.test(username.current.value)) {
       setUsernameError("");
     } else {
       setUsernameError("• Username can only contain alphabets & numbers");
@@ -40,7 +40,11 @@ const Signup = () => {
   };
 
   const emailValidator = () => {
-    if (/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {
+    if (
+      /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(
+        email.current.value
+      )
+    ) {
       setEmailError("");
     } else {
       setEmailError("• Not a valid email");
@@ -48,7 +52,7 @@ const Signup = () => {
   };
 
   const passwordValidator = () => {
-    if (/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,}/.test(password)) {
+    if (/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,}/.test(password.current.value)) {
       setPasswordError("");
     } else {
       setPasswordError(
@@ -58,7 +62,7 @@ const Signup = () => {
   };
 
   const passwordAgainValidator = () => {
-    if (password === passwordAgain) {
+    if (password.current.value === passwordAgain.current.value) {
       setPasswordAgainError("");
     } else {
       setPasswordAgainError("• Passwords do not match");

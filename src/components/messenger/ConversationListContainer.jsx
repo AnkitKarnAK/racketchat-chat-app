@@ -19,7 +19,6 @@ const Sidebar = ({ setToggleContainer }) => {
             width="30"
             onClick={() => {
               setToggleContainer((prevState) => !prevState);
-              console.log("click on brand");
             }}
           />
         </div>

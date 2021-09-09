@@ -29,7 +29,11 @@ const Login = () => {
   };
 
   const emailValidator = () => {
-    if (/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {
+    if (
+      /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(
+        email.current.value
+      )
+    ) {
       setEmailError("");
     } else {
       setEmailError("• Not a valid email");
@@ -37,7 +41,7 @@ const Login = () => {
   };
 
   const passwordValidator = () => {
-    if (/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,}/.test(password)) {
+    if (/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,}/.test(password.current.value)) {
       setPasswordError("");
     } else {
       setPasswordError(

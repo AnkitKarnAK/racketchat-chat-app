@@ -33,7 +33,7 @@ const Conversation = ({ conversation }) => {
           src="https://images.pexels.com/photos/3686769/pexels-photo-3686769.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
           alt="conversation"
         />
-        <span className="conversationName">{conversationUser.username}</span>
+        <span className="conversationName">{conversationUser?.username}</span>
       </div>
     </>
   );
@@ -47,8 +47,8 @@ const ConversationList = ({ conversations }) => {
           <p className="conversationList_header_title">Conversations</p>
         </div>
         <div className="conversation_wrapper">
-          {conversations.map((conversation) => (
-            <Conversation conversation={conversation} />
+          {conversations?.map((conversation) => (
+            <Conversation conversation={conversation} key={conversation._id} />
           ))}
         </div>
       </div>

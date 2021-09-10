@@ -1,4 +1,20 @@
-.chatOnlineFriend {
+.chatOnlineHeader,
+.chatOfflineHeader {
+  font-family: Helvetica Neue, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 1rem;
+  line-height: 1.75rem;
+  color: #f9fafb;
+}
+
+.chatOfflineHeader {
+  color: #4b5563;
+  margin-top: 2rem;
+}
+
+.chatOnlineFriend,
+.chatOfflineFriend {
   display: flex;
   align-items: center;
   font-weight: 500;
@@ -6,12 +22,23 @@
   margin-top: 10px;
 }
 
-.chatOnlineImgContainer {
+.chatOfflineFriend:hover {
+  background: rgba(0, 0, 0, 0.2);
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  font-weight: bold;
+  margin-right: 16px;
+  cursor: pointer;
+}
+
+.chatOnlineImgContainer,
+.chatOfflineImgContainer {
   position: relative;
   margin-right: 10px;
 }
 
-.chatOnlineImg {
+.chatOnlineImg,
+.chatOfflineImg {
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -29,12 +56,18 @@
   right: 2px;
 }
 
-.chatOnlineName {
+.chatOnlineName,
+.chatOfflineName {
   color: white;
 }
 
 @media screen and (max-width: 768px) {
-  .chatOnlineName {
+  .chatOnlineName,
+  .chatOfflineName {
     display: none;
+  }
+  .chatOnlineHeader,
+  .chatOfflineHeader {
+    font-size: 0.8rem;
   }
 }

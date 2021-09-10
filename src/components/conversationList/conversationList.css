@@ -35,19 +35,6 @@
   font-weight: 500;
 }
 
-/* .conversation_selected {
-  height: auto;
-  display: flex;
-  align-items: center;
-  background: rgba(0, 0, 0, 0.2);
-  border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px;
-  font-weight: bold;
-  margin-right: 16px;
-  cursor: pointer;
-  z-index: 2;
-} */
-
 .conversation:hover {
   background: rgba(0, 0, 0, 0.2);
   border-top-right-radius: 8px;
@@ -55,6 +42,7 @@
   font-weight: bold;
   margin-right: 16px;
   cursor: pointer;
+  font-size: 18px;
 }
 
 .conversation {
@@ -69,4 +57,24 @@
   width: 100%;
   text-overflow: ellipsis;
   word-break: break-all;
+}
+
+.conversation_selected {
+  display: flex;
+  align-items: center;
+  font-family: Helvetica Neue, sans-serif;
+  margin-top: 10px;
+  font-size: 14px;
+  color: #ffffff;
+  padding: 5px 10px;
+  height: 100%;
+  width: 100%;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  background: rgba(0, 0, 0, 0.3);
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  font-weight: bold;
+  margin-right: 16px;
+  cursor: pointer;
 }

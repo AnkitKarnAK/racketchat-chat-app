@@ -3,7 +3,7 @@ import { useAuthContext } from "../../context/auth-context";
 import "./conversationList.css";
 import axios from "axios";
 
-const Conversation = ({ conversation }) => {
+const Conversation = ({ conversation, currentChat }) => {
   const { user: currentUser } = useAuthContext();
   const [conversationUser, setConversationUser] = useState(null);
 
@@ -27,7 +27,13 @@ const Conversation = ({ conversation }) => {
 
   return (
     <>
-      <div className="conversation">
+      <div
+        className={
+          currentChat?._id === conversation._id
+            ? "conversation_selected"
+            : "conversation"
+        }
+      >
         <img
           className="conversationImg"
           src="https://images.pexels.com/photos/3686769/pexels-photo-3686769.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
@@ -39,7 +45,7 @@ const Conversation = ({ conversation }) => {
   );
 };
 
-const ConversationList = ({ conversations, setCurrentChat }) => {
+const ConversationList = ({ conversations, currentChat, setCurrentChat }) => {
   const { setToggleContainer } = useAuthContext();
   return (
     <>
@@ -56,7 +62,10 @@ const ConversationList = ({ conversations, setCurrentChat }) => {
                 setToggleContainer((prev) => !prev);
               }}
             >
-              <Conversation conversation={conversation} />
+              <Conversation
+                conversation={conversation}
+                currentChat={currentChat}
+              />
             </div>
           ))}
         </div>

@@ -92,6 +92,7 @@ const Messenger = () => {
     <div className="messengerWrapper">
       <ConversationListContainer
         conversations={conversations}
+        currentChat={currentChat}
         setCurrentChat={setCurrentChat}
       />
 
@@ -99,6 +100,7 @@ const Messenger = () => {
         currentChat={currentChat}
         messages={messages}
         setMessages={setMessages}
+        allUsers={allUsers}
         socket={socket}
       />
 

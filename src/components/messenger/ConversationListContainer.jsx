@@ -37,7 +37,11 @@ const CompanyHeader = () => (
   </div>
 );
 
-const ConversationListContent = ({ conversations, setCurrentChat }) => {
+const ConversationListContent = ({
+  conversations,
+  currentChat,
+  setCurrentChat,
+}) => {
   return (
     <>
       <div className="conversationList_list_wrapper">
@@ -45,6 +49,7 @@ const ConversationListContent = ({ conversations, setCurrentChat }) => {
         <ConversationSearch />
         <ConversationList
           conversations={conversations}
+          currentChat={currentChat}
           setCurrentChat={setCurrentChat}
         />
       </div>
@@ -52,7 +57,11 @@ const ConversationListContent = ({ conversations, setCurrentChat }) => {
   );
 };
 
-const ConversationListContainer = ({ conversations, setCurrentChat }) => {
+const ConversationListContainer = ({
+  conversations,
+  currentChat,
+  setCurrentChat,
+}) => {
   const { toggleContainer } = useAuthContext();
 
   return (
@@ -61,6 +70,7 @@ const ConversationListContainer = ({ conversations, setCurrentChat }) => {
       <div className="conversationList_container">
         <ConversationListContent
           conversations={conversations}
+          currentChat={currentChat}
           setCurrentChat={setCurrentChat}
         />
       </div>
@@ -73,6 +83,7 @@ const ConversationListContainer = ({ conversations, setCurrentChat }) => {
       >
         <ConversationListContent
           conversations={conversations}
+          currentChat={currentChat}
           setCurrentChat={setCurrentChat}
         />
       </div>

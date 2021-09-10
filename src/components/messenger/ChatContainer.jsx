@@ -4,11 +4,21 @@ import Message from "../message/Message";
 import "./messenger.css";
 import { useRef, useState, useEffect } from "react";
 
-const ChatContainer = ({ currentChat, messages, setMessages, socket }) => {
+const ChatContainer = ({
+  currentChat,
+  messages,
+  setMessages,
+  allUsers,
+  socket,
+}) => {
   const { user, setToggleContainer } = useAuthContext();
   const [newMessage, setNewMessage] = useState("");
 
   const scrollRef = useRef();
+
+  const receiverId = currentChat?.members.find((member) => member !== user._id);
+
+  const currentChatUser = allUsers.find((user) => user._id === receiverId);
 
   const messageSendHandler = async (e) => {
     e.preventDefault();
@@ -18,10 +28,6 @@ const ChatContainer = ({ currentChat, messages, setMessages, socket }) => {
       text: newMessage,
       conversationId: currentChat._id,
     };
-
-    const receiverId = currentChat.members.find(
-      (member) => member !== user._id
-    );
 
     socket.current.emit("sendMessage", {
       senderId: user._id,
@@ -52,6 +58,7 @@ const ChatContainer = ({ currentChat, messages, setMessages, socket }) => {
         setToggleContainer(false);
       }}
     >
+      <div className="chatBoxHeader">{currentChatUser?.username}</div>
       <div className="chatBoxWrapper">
         {currentChat ? (
           <>

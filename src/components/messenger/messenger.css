@@ -79,11 +79,30 @@
 .chatBox {
   flex: 8;
 }
+
+.chatBoxHeader {
+  height: 4rem;
+  border: 2px solid var(--primary-color);
+  border-radius: 0rem 0rem 0.5rem 0.5rem;
+  background-color: #f0f2f5;
+  color: var(--primary-color);
+  font-family: Helvetica Neue, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 2rem;
+  line-height: 1.75rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 0.5rem;
+}
+
 .chatBoxWrapper {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   position: relative;
+  height: calc(100% - 4rem) !important;
 }
 
 .chatBoxTop {
@@ -178,5 +197,8 @@ form {
   }
   .noConversationText {
     font-size: 2.5rem;
+  }
+  .chatMessageInput {
+    width: 100%;
   }
 }

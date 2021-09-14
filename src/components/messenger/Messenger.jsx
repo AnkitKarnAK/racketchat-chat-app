@@ -18,7 +18,7 @@ const Messenger = () => {
   const { user, setToggleContainer } = useAuthContext();
 
   useEffect(() => {
-    socket.current = io("https://racketapi.ankitkarn.repl.co");
+    socket.current = io("https://racketapi.ankitkarn.repl.co/");
     socket.current.on("getMessage", (data) => {
       setArrivalMessage({
         sender: data.senderId,

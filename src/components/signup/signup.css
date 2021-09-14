@@ -49,6 +49,9 @@
   font-size: 1.125rem;
   padding-left: 1.25rem;
 }
+.signupInput::placeholder {
+  color: gray;
+}
 
 .signupInput:focus {
   outline: none;

@@ -48,7 +48,7 @@ const ChatOnline = ({ allUsers, currentId, socketUsers, setCurrentChat }) => {
           <span className="chatOnlineName">{onlineUser.username}</span>
         </div>
       ))}
-      <div className="chatOfflineHeader">Offline Users:</div>
+      <div className="chatOfflineHeader">All Users:</div>
       {offlineUsers?.map((offlineUser) => (
         <div
           className="chatOfflineFriend"

@@ -1,0 +1,73 @@
+.chatOnlineHeader,
+.chatOfflineHeader {
+  font-family: Helvetica Neue, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 1rem;
+  line-height: 1.75rem;
+  color: #f9fafb;
+}
+
+.chatOfflineHeader {
+  color: #4b5563;
+  margin-top: 2rem;
+}
+
+.chatOnlineFriend,
+.chatOfflineFriend {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.chatOfflineFriend:hover {
+  background: rgba(0, 0, 0, 0.2);
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  font-weight: bold;
+  margin-right: 16px;
+  cursor: pointer;
+}
+
+.chatOnlineImgContainer,
+.chatOfflineImgContainer {
+  position: relative;
+  margin-right: 10px;
+}
+
+.chatOnlineImg,
+.chatOfflineImg {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.chatOnlineBadge {
+  width: 12px;
+  height: 12px;
+  border: 2px solid white;
+  border-radius: 50%;
+  background-color: #10b981;
+  position: absolute;
+  bottom: 3px;
+  right: 2px;
+}
+
+.chatOnlineName,
+.chatOfflineName {
+  color: white;
+}
+
+@media screen and (max-width: 768px) {
+  .chatOnlineName,
+  .chatOfflineName {
+    display: none;
+  }
+  .chatOnlineHeader,
+  .chatOfflineHeader {
+    font-size: 0.8rem;
+  }
+}
